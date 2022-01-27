@@ -99,7 +99,7 @@ const getBase64 = file => {
             };
             
             console.log(data);
-            const result = await fetch('https://cors-anywhere.herokuapp.com/https://ksdcu1y80a.execute-api.ap-south-1.amazonaws.com/Production/',
+            const result = await fetch('https://ksdcu1y80a.execute-api.ap-south-1.amazonaws.com/Production/',
             {
                     method: 'POST',
                     headers : {
@@ -116,7 +116,7 @@ const getBase64 = file => {
         useEffect( async() => {
             if(uid!==undefined){
             const targetImage=uid+'.png';
-            const result = await fetch('https://cors-anywhere.herokuapp.com/https://ksdcu1y80a.execute-api.ap-south-1.amazonaws.com/Production/ocr',
+            const result = await fetch('https://ksdcu1y80a.execute-api.ap-south-1.amazonaws.com/Production/ocr',
             {
                     method: 'POST',
                     headers : {

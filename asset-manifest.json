@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reader/static/css/main.ccdb851c.css",
+    "main.js": "/reader/static/js/main.77e3e852.js",
+    "index.html": "/reader/index.html",
+    "main.ccdb851c.css.map": "/reader/static/css/main.ccdb851c.css.map",
+    "main.77e3e852.js.map": "/reader/static/js/main.77e3e852.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ccdb851c.css",
+    "static/js/main.77e3e852.js"
+  ]
+}

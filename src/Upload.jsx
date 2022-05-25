@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {Button , Form,FormGroup,Label,FormText, Input } from "reactstrap";
+
 import FileBase64 from "react-file-base64";
 import {Buffer} from 'buffer';
 import "./Upload.css";
+
+
+
 const Upload = () => {
 
     const processing = "processing document...";
@@ -56,7 +60,7 @@ const getBase64 = file => {
     
 
     
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
 
     let base64ToString  ;
     await getBase64(e.target.files[0])
@@ -86,8 +90,8 @@ const getBase64 = file => {
                 const printString=async ()=>{
                     return await file.replace('"','').replace('"','');
                     }
-                console.log("inside fetch");
-                console.log(file);
+                // console.log("inside fetch");
+                // console.log(file);
                 const UID = Math.floor((Math.random() * 1000000) + 1);
                 await setUid(UID);
         var data = await {
@@ -98,16 +102,18 @@ const getBase64 = file => {
 
             };
             
-            console.log(data);
-            const result = await fetch('https://ksdcu1y80a.execute-api.ap-south-1.amazonaws.com/Production/',
+            // console.log(data);
+            const result = await fetch('/Production',
             {
                     method: 'POST',
                     headers : {
-                        Accept : 'application/json',
-                        'Content-type': 'application/json'
+                        'Accept' : 'application/json',
+                        'Content-type': 'application/json',
+                        //  'Access-Control-Allow-Headers':'*'
                     },
                     body : JSON.stringify(data)
             });
+            
            callTarget(result);
     }
   },[file]);
@@ -116,27 +122,37 @@ const getBase64 = file => {
         useEffect( async() => {
             if(uid!==undefined){
             const targetImage=uid+'.png';
-            const result = await fetch('https://ksdcu1y80a.execute-api.ap-south-1.amazonaws.com/Production/ocr',
+            // alert("result");
+            //https://cors-anywhere.herokuapp.com/
+            const result = await fetch('/Production/ocr',
             {
                     method: 'POST',
+                    
                     headers : {
-                        Accept : 'application/json',
+                        'Accept' : 'application/json',
                         'Content-type': 'application/json',
+                        'Access-Control-Allow-Origin':'*'
                         
                     },
                     body : JSON.stringify(targetImage)
             });
-
+            // console.log("result stored");
             // alert(result);
+           
 
            const ocrbody=await result.json();
-          
             // console.log(ocrbody);
+          
+            // console.log(ocrbody.body[0]);
             setjsonString(ocrbody.body[0]);
         }
             
 
         },[target])
+        useEffect( async()=>{
+            // console.log(jsonString);
+            // alert(jsonString);
+        },[jsonString])
 
 
 

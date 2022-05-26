@@ -2,7 +2,7 @@
   "name": "evote",
   "version": "0.1.0",
   "private": true,
-  "proxy":"https://ksdcu1y80a.execute-api.ap-south-1.amazonaws.com",
+  
   "homepage": "https://nitin-j04.github.io/reader",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
